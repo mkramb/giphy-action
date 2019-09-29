@@ -5,7 +5,7 @@ module.exports = async function updateComment(
   lastComment,
   newCommentBody
 ) {
-  await octokit.issue.updateComment({
+  await octokit.issues.updateComment({
     owner: github.context.actor,
     repo: github.context.payload.repository.name,
     comment_id: lastComment.id,
