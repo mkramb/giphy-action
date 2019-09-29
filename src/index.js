@@ -1,23 +1,27 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-const giphy = require("giphy-js-sdk-core");
+const giphyApi = require("giphy-js-sdk-core");
 
-const getNewCommentBody = require("./utils/getNewCommentBody");
+const getMatch = require("./utils/getMatch");
+const getNewComment = require("./utils/getNewComment");
 const updateComment = require("./utils/updateComment");
 
 async function run() {
-  core.info(JSON.stringify(github.context, null, 2));
-
   try {
     const giphySecret = core.getInput("giphy-secret");
     const githubSecret = core.getInput("github-secret");
 
+    const giphy = giphyApi(giphySecret);
     const octokit = new github.GitHub(githubSecret);
-    const lastComment = github.context.payload.comment;
+    const comment = github.context.payload.comment;
 
-    if (lastComment) {
-      const newCommentBody = getNewCommentBody(giphy(giphySecret), lastComment);
-      await updateComment(octokit, lastComment, newCommentBody);
+    if (comment) {
+      const query = getMatch(comment.body);
+
+      if (query) {
+        const newCommentBody = await getNewComment(giphy, query);
+        await updateComment(octokit, comment, newCommentBody);
+      }
     }
   } catch (error) {
     core.error(error);
