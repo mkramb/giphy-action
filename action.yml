@@ -1,0 +1,11 @@
+name: 'Giphy GitHub Action'
+description: 'Instant access to millions of GIFs by entering a word or phrase'
+author: 'Mitja Kramberger'
+inputs: 
+  giphy-secret:
+    required: true
+  github-secret:
+    required: true
+runs:
+  using: 'node12'
+  main: 'src/index.js'

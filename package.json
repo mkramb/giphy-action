@@ -1,0 +1,14 @@
+{
+  "name": "giphy-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Instant access to library of millions of GIFs by entering a word or phrase",
+  "main": "src/index.js",
+  "author": "Mitja Kramberger",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.1.1",
+    "@actions/github": "^1.1.0",
+    "giphy-js-sdk-core": "^1.0.6"
+  }
+}
