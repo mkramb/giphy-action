@@ -1,6 +1,6 @@
 const github = require("@actions/github");
 
-export function getLastPullRequestNumber() {
+function getLastPullRequestNumber() {
   return (
     github.context.payload &&
     github.context.payload.pull_request &&
