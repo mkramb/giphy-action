@@ -2,9 +2,9 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const giphy = require("giphy-js-sdk-core");
 
-const postComment = require("./utils/postComment");
 const getLastComment = require("./utils/getLastComment");
 const getNewCommentBody = require("./utils/getNewCommentBody");
+const postComment = require("./utils/postComment");
 
 async function run() {
   try {

@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: mkramb/giphy-action@releases/v1
-    with:
-      giphy-secret: ${{ secrets.GIPHY_API_SECRET }}
-      github-secret: ${{ secrets.GITHUB_API_SECRET }}
+      with:
+        giphy-secret: ${{ secrets.GIPHY_API_SECRET }}
+        github-secret: ${{ secrets.GITHUB_API_SECRET }}
 ```
