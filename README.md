@@ -19,9 +19,11 @@ on:
 jobs:
   giphy:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-    - uses: mkramb/giphy-action@master
-      with:
-        giphy-secret: ${{ secrets.GIPHY_API_SECRET }}
-        github-secret: ${{ secrets.GITHUB_API_SECRET }}
+      - uses: mkramb/giphy-action@master
+        with:
+          giphy-secret: ${{ secrets.GIPHY_TOKEN }}
+          github-secret: ${{ secrets.GITHUB_TOKEN }}
 ```
